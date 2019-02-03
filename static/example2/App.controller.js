@@ -3,14 +3,16 @@ sap.ui.define([
 ], function (Controller) {
     "use strict";
     return Controller.extend("sap.ui.demo.wt.App", {
-        data:null,
-        onInit : () => {
+        result:null,
+        onInit : function () {
+            let that = this;
             $.ajax({url: "/getData", success: function(result){
-                data = result;
-             }});
+                that.result = result;
+              }});
         },
-        onShowData : () => {
-            console.log("result"+ JSON.stringify(data));
+        onShowData : function () {
+            // show a native JavaScript alert
+            console.log("result"+ JSON.stringify(this.result));
 
         }
     });
